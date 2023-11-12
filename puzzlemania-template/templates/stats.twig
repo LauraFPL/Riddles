@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% block title %}Team Stats | PuzzleMania{% endblock %}
+{% block head %}
+    <script src="assets/js/main.js" type="text/javascript"></script>
+{% endblock %}
+{% block content %}
+    <div class="baseContent">
+        {% for notif in notifs %}
+            <p>{{ notif }}</p>
+        {% endfor %}
+        <h1>TEAM STATUS</h1>
+
+        <article id="team_status">
+            <p>Team name: {{ team.name }}</p><br>
+            <p> Current number of team members: {{ members }}/2</p>
+            {% for username in usernames %}
+                    <li>{{ username }}</li>
+            {% endfor %}
+            <br>
+            <p>Last game total points: {{ team.lastGamePoints }}</p>
+        </article>
+
+        {% if members < 2 %}
+            <button id="qr" type="submit" value={{ team.id }} onclick="showQr()">Invite to the team</button>
+            <img id="div_qr" style="display:none;" src="{{qr}}" />
+            <a id="qr_dwn" style="display:none;" href="{{qr}}" download="team_{{team.name}}_qr">Descargar</a>
+        {% endif %}
+        <script type="text/javascript">if(localStorage.getItem('showQR')){showQr()}</script>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    {% block styles %}
+        <link rel="stylesheet" href="{{ full_url_for('showHome') }}assets/css/style.css"/>
+    {% endblock %}
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block header %}
+    <header>
+      <div class="topnav">
+        <a href="{{ full_url_for('showHome') }}">Home</a>
+        <a href="{{ full_url_for('signIn') }}">Sign in</a>
+        <a href="{{ full_url_for('signUp') }}">Sign up</a>
+        <a href="{{ full_url_for('join') }}">Join a team</a>
+        <a href="{{ full_url_for('stats') }}">Team stats</a>
+        <a href="{{ full_url_for('game') }}">Games</a>
+        <a href="{{ full_url_for('showRiddles') }}">Riddles</a>
+
+        <a href="{{ full_url_for('profile') }}">Profile</a>
+      </div>
+    </header>
+    {% endblock %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

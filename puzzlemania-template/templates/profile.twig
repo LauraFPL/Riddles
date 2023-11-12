@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block title %}Profile | PuzzleMania{% endblock %}
+
+{% block content %}
+
+    <div class="baseContent">
+        <h1> Profile of {{user}} </h1>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file -->
+        {% if img is not empty %}
+            <img id="profileImage" src={{img}}>
+        {% endif %}
+        
+        <form action="{{ formAction }}" enctype="multipart/form-data" method="POST">
+            <input type="file" name="imageFile" accept="image/png, image/jpg">
+            
+            {% if uploadErrors is not empty %}
+                {% for uploadError in uploadErrors %}
+                    <p class="error">{{ uploadError }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <input type="email" name="email" value="{{email}}" disabled >
+            <input type="submit" value="Change profile image">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block title %}Teams | PuzzleMania{% endblock %}
+
+{% block content %}
+    <div class="baseContent">
+        {% if notifs is not empty %}
+            {% for notif in notifs %}
+                <p>{{ notif }}</p>
+            {% endfor %}
+        {% endif %}
+        <h1>Manage your team:</h1>
+        <form action="{{ formAction }}" method="POST">
+
+            <label> Team name: </label>
+            <input type="text" name="name" placeholder="Enter the team name"
+                value="{{ formData.name }}">
+            {% if formErrors['name'] %}
+                <p class="error"> {{ formErrors['name'] }}</p>
+            {% endif %}
+
+            <input  type="submit" value="Create team">
+
+            {% if teams is not empty %}
+                <h2>Teams available:</h2>
+                <div id="teams">
+                    {% for team in teams %}
+                        <li class="team">
+                            <p>{{ team.name }}</p>
+                            <button class = "button_style" name="join" type="submit" value={{ team.id }}>Join team</button>
+                        </li>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        
+        </form>
+
+        
+
+    </div>
+{% endblock %}

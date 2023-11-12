@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block title %}Game | PuzzleMania{% endblock %}
+
+{% block content %}
+
+    <div class="baseContent">
+        <h1 data-cy="game">Welcome {{team.name}}</h1>
+        <article id="instructions">
+            <h2>Intructions:</h2>
+            <p>1.Press start</p>
+            <p>2.Solve Riddles</p>
+            <p>3.Earn Points</p>
+        </article>
+        <!-- No se si se puede hacer asi -->
+        <form action = "{{ formAction }}" method="POST">
+            <button class = "button_style" name = "start" type="submit">Start</button>
+        </form>
+        {% if formErrors['game'] %}
+                <p class="error">{{ formErrors['game'] }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

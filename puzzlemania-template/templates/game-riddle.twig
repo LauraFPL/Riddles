@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block title %}Game | PuzzleMania{% endblock %}
+
+{% block content %}
+    
+    <div class="baseContent">
+        <h1>Game</h1>
+        <article>
+            <h1>{{riddle}}</h1>
+        </article>
+        <h2>Score: {{points}}</h2>
+        <form action = "{{ formAction }}" method="POST">
+            <input type="text" name="answer" value="{{answer}}">
+            {% if result is defined%}
+                <!-- <button name = "start" type="submit" disabled >Submit</button> -->
+            {% else %}
+                <button class = "button_style" name = "start" type="submit">Submit</button>
+            {% endif %}
+        </form>
+
+        {% if result is defined %}
+            {% if result %}
+                <p>Correct Answer!</p>
+            {% else %}
+                <p>Wrong Answer!</p>
+                <p>Right answer: {{ rightAnswer }}</p>
+            {% endif %}
+            {% if end is defined %}
+                <a class = "button_style" href="{{ full_url_for('stats') }}">Finish</a>
+            {% else %}
+                <a class = "button_style" href="{{url}}">Next</a>
+            {% endif %}
+        {% endif %}
+
+    </div>
+{% endblock %}

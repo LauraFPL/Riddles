@@ -1,0 +1,8 @@
+.idea/
+.vscode/
+puzzlemania-template/vendor/
+puzzlemania-template/cypress/node_modules/
+puzzlemania-template/cypress/cypress/tmp/
+puzzlemania-template/public/uploads/*
+puzzlemania-template/.env
+Notes.md

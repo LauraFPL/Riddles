@@ -1,0 +1,40 @@
+{% extends "base.twig" %}
+
+{% block title %}Sign-up | PuzzleMania{% endblock %}
+
+{% block content %}
+    <div class="baseContent">
+        <h1>Sign up here!</h1>
+        
+        <form data-cy="sign-up" action="{{ formAction }}" method="POST">
+            {% if teamID %}
+                <input type="hidden" name="teamId" value="{{ teamID }}">
+            {% endif %}
+            <div class="sign-up">
+                <label> Email </label>
+                <input data-cy="sign-up__email" type="text" name="email" placeholder="Enter your email"
+                    value="{{ formData.email }}">
+            </div>
+            {% if formErrors['email'] %}
+                <p class="error" data-cy="sign-up__wrongEmail">{{ formErrors['email'] }}</p>
+            {% endif %}
+
+            <div class="sign-up">
+                <label> Password </label>
+                <input data-cy="sign-up__password" type="password" name="password" placeholder="Enter your password">
+            </div>
+
+            <div class="sign-up">
+                <label> Repeat Password </label>
+                <input data-cy="sign-up__repeatPassword" type="password" name="repeatPassword"
+                    placeholder="Repeat your password">
+            </div>
+            {% if formErrors['password'] %}
+                <p class="error" data-cy="sign-up__wrongPassword">{{ formErrors['password'] }}</p>
+            {% endif %}
+
+            <input data-cy="sign-up__btn" type="submit" value="Sign-up">
+        </form>
+
+    </div>
+{% endblock %}

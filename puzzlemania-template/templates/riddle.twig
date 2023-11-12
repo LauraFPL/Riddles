@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block title %}Riddles{% endblock %}
+
+{% block content %}
+
+    <div class="baseContent">
+        {% if riddle is not empty %}
+            <h1> RIDDLE {{riddle.id}} </h1>
+            <article>
+                <p>Riddle ID: {{riddle.id}}</p>
+                <p>User: {{riddle.userID}}</p>
+                <p>Riddle: {{riddle.riddle}}</p>
+                <p>Answer:{{riddle.answer}}</p>
+            </article>
+        {% else %}
+            <p>This riddle doesn't exists</p>
+        {% endif %}
+        
+    </div>
+    
+{% endblock %}
